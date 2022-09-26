@@ -1,0 +1,33 @@
+/*=================================*/
+/*==========全局通用SASS变量,只存变量=========*/
+/*=================================*/
+/*=================================*/
+$themeColor: #409EFF;
+/*当前主题颜色*/
+.theme-color{
+  color: $themeColor;
+}
+
+/* 文字颜色 */
+$txt-c-m: #303133;
+$txt-c1: #606266;
+$txt-c2:#909399;
+$txt-c3:#C0C4CC;
+/*边框颜色*/
+$border-color-1:#DCDFE6;
+$border-color-2:#E4E7ED;
+$border-color-3:#EBEEF5;
+$border-color-4:#F2F6FC;
+
+$shadow-color:#656565;
+/*阴影,1到3，越来越高*/
+$shadow-theme1:0px 1px 2px -2px rgba($themeColor,0.16),0px 3px 6px 0px rgba($themeColor,0.19),0px 5px 12px 4px rgba($themeColor,0.09);
+$shadow-theme2:0px 3px 6px -4px rgba($themeColor,0.12),0px 6px 16px 0px rgba($themeColor,0.08),0px 5px 12px 4px rgba($themeColor,0.05);
+$shadow-theme3:0px 6px 16px -8px rgba($themeColor,0.08),0px 9px 28px 0px rgba($themeColor,0.05),0px 12px 48px 16px rgba($themeColor,0.03);
+
+$shadow-1:0px 1px 2px -2px rgba($shadow-color,0.16),0px 3px 6px 0px rgba($shadow-color,0.19),0px 5px 12px 4px rgba($shadow-color,0.09);
+$shadow-2:0px 3px 6px -4px rgba($shadow-color,0.12),0px 6px 16px 0px rgba($shadow-color,0.08),0px 5px 12px 4px rgba($shadow-color,0.05);
+$shadow-3:0px 6px 16px -8px rgba($shadow-color,0.08),0px 9px 28px 0px rgba($shadow-color,0.05),0px 12px 48px 16px rgba($shadow-color,0.03);
+
+/*灰色底色*/
+$bg-gray:#F5F5F5;

@@ -1,0 +1,21 @@
+[{
+    "menuCode": "systemsetting",
+    "menuName": "系统设置",
+    "sysWindow": 0,
+    "urlPath": "systemsetting",
+    "component": "sys/setting/sysconfig/index.vue",
+    "icon": "gcscreen"
+}, {
+    "menuCode": "systemsetting",
+    "menuName": "系统设置",
+    "urlPath": "systemsetting",
+    "component": "sys/setting/sysconfig/index.vue",
+    "iframe": 0,
+    "iframePath": "",
+    "icon": "gcscreen",
+    "sysWindow": 0,
+    "iconColor": "",
+    "imgOrIcon": "image",
+    "imgUrl": "/web/static/img/3.b5abdfed.png",
+    "imgUrlName": "3"
+}]

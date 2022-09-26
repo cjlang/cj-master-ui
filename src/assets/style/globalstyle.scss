@@ -1,0 +1,253 @@
+@charset "UTF-8";
+/*=================================*/
+/*==========全局通用样式 ============*/
+/*=================================*/
+/*=================================*/
+*{
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*选中文字，配合主题色*/
+::selection {background:$themeColor;color:#FFFFFF;}
+::-moz-selection {background:$themeColor;color:#FFFFFF;}
+::-webkit-selection {background:$themeColor;color:#FFFFFF;}
+
+.showdot{
+  overflow: hidden; /*自动隐藏文字*/
+  text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+  white-space: nowrap;/*强制不换行*/
+  width: 20em;/*不允许出现半汉字截断*/
+}
+/* 不能选中元素 */
+.unselect{
+  -moz-user-select:none; /* Firefox私有属性 */
+  -webkit-user-select:none; /* WebKit内核私有属性 */
+  -ms-user-select:none; /* IE私有属性(IE10及以后) */
+  -khtml-user-select:none; /* KHTML内核私有属性 */
+  -o-user-select:none; /* Opera私有属性 */
+  user-select:none; /* CSS3属性 */
+}
+
+/* 定义进度条颜色，最终和主题保持一致 */
+#nprogress .bar {
+  background: $themeColor !important; 
+}
+
+.h-10px{width: 10px;}
+.h-15px{width: 15px;}
+.h-20px{width: 20px;}
+.v-10px{height: 10px;}
+.v-15px{height: 15px;}
+.v-20px{height: 20px;}
+/*子页面模板，左右20px*/
+.content-panel-20{
+  display: block;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  padding: 20px;
+}
+
+/*子页面模板，左右40px**/
+.content-panel-40{
+  display: block;
+  width: calc(100% - 80px);
+  height: calc(100% - 80px);
+  padding: 40px;
+}
+/*高度占位40px*/
+.div_placeholder{
+  display: block;
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+}
+
+.win10-blue{
+  background-color: #469AB8;
+}
+.win10-red{
+  background-color: #be3b3b;
+}
+.win10-yellow{
+  background-color: #fdfa45;
+}
+.win10-gray{
+  background-color: #535353;
+}
+.win10-green{
+  background-color: #25a05c;
+}
+
+/*------------------------------------------------------------- */
+/*------------Vue转场动画区域------------------------------------- */
+/*   XXX-enter-active          XXX元素显示时候的动画时间                */
+/*   XXX-leave-active          XXX元素隐藏时候的动画时间                */
+/*   XXX-active                XXX元素显示时候的元素设置，动画开始前的最初样式*/
+/*   XXX-leave-to              XXX元素隐藏时候的元素设置，动画结束后的最终样式*/
+/*------------------------------------------------------------- */
+
+.fade-enter-active,.fade-leave-active {transition: all .3s ease;}
+.fade-enter,.fade-leave-to{opacity: 0;}
+
+.fade-up-enter-active,.fade-up-leave-active {transition: all .3s ease;}
+.fade-up-enter{transform: translateY(-30px);opacity: 0;}
+.fade-up-leave-to{opacity: 0;}
+
+.login-txt-enter-active,.login-txt-leave-active {transition: all .3s ease;}
+.login-txt-enter,.login-txt-leave-to{opacity: 0;}
+
+.login-ani-enter-active,.login-ani-leave-active {transition: all .3s ease;}
+.login-ani-enter{transform: translateY(-20px);opacity: 0;}
+.login-ani-leave-to{opacity: 0;}
+
+.appicon-show-enter-active,.appicon-show-leave-active {transition: all .5s ease;}
+.appicon-show-enter,.appicon-show-leave-to{transform: translateX(-30px);opacity: 0;}
+
+.desktoptask-show-enter-active,.desktoptask-show-leave-active {transition: all .5s ease;}
+.desktoptask-show-enter{transform: translateY(36px);}
+.desktoptask-show-leave-to{transform: translateY(15px);opacity: 0;}
+
+.menu-show-enter-active,.menu-show-leave-active {transition: all .3s ease;}
+.menu-show-enter,.menu-show-leave-to{transform: translateY(30px);opacity: 0;}
+
+.context-ani-enter-active,.context-ani-leave-active {transition: all .2s ease;}
+.context-ani-enter{transform: translateX(10px);opacity: 0;}
+.context-ani-leave-to{opacity: 0;}
+
+.notice-ani-enter-active,.notice-ani-leave-active {transition: all .3s ease;}
+.notice-ani-enter,.notice-ani-leave-to{opacity: 0;}
+
+.allprogram-enter-active,.allprogram-leave-active {transition: all 1s ease;}
+.allprogram-enter{transform: translateX(-40px);opacity: 0;}
+.allprogram-leave-to{transform: translateX(-25px);opacity: 0;}
+
+.favoriteapp-show-enter-active,.favoriteapp-show-leave-active {transition: all 1s ease;}
+.favoriteapp-show-enter{transform: translateY(36px);}
+.favoriteapp-show-leave-to{transform: translateY(25px);opacity: 0;}
+
+/*AB页面动画的时间*/
+.fade-left-leave-active,.fade-left-enter-active {transition: all .4s ease;}
+/*B页面进入前的初始状态*/
+.fade-left-enter{transform: translateX(30px);opacity: 0;}
+/*A页面离开后的最终状态*/
+.fade-left-leave-to{transform: translateX(-10px);opacity: 0;}
+
+.slide-fade-enter-active,.slide-fade-leave-active {transition: all .3s ease;}
+.slide-fade-enter, .slide-fade-leave-to{transform: translateY(30px);opacity: 0;}
+
+.widow-close-enter-active,.widow-close-leave-active {transition: all .3s ease;}
+.widow-close-enter{transform: translateY(-30px);transform: rotateY(10deg);opacity: 0;}
+.widow-close-leave-to{opacity: 0;}
+
+.morefunc-show-enter-active,.morefunc-show-leave-active {transition: all .3s ease;}
+.morefunc-show-enter,.morefunc-show-leave-to{opacity: 0;}
+
+
+
+
+/*------------------------------------------------------------- */
+/*------------图片逐帧动画--垃圾箱的-------------------------------- */
+/*      .recyclebin-ani {
+          animation: recyclebin 1s steps(1, start) 1;
+          -webkit-animation: recyclebin 1s steps(1, start) 1;
+           animation-fill-mode: forwards;
+        }
+/*------------------------------------------------------------- */
+@keyframes recyclebin{
+  0%{
+      background-position: -200px 0;
+  }
+  20%{
+      background-position: -160px 0;
+  }
+  40%{
+      background-position: -120px 0 ;
+  }
+  60%{
+      background-position: -80px 0 ;
+  }
+  80%{
+      background-position: -40px 0 ;
+  }
+  100%{
+      background-position: 0px 0 ;
+  }
+}
+@-webkit-keyframes recyclebin{
+  0%{
+    background-position: -200px 0;
+  }
+  20%{
+      background-position: -160px 0;
+  }
+  40%{
+      background-position: -120px 0 ;
+  }
+  60%{
+      background-position: -80px 0 ;
+  }
+  80%{
+      background-position: -40px 0 ;
+  }
+  100%{
+      background-position: 0px 0 ;
+  }
+}
+
+/******************通用样式-直接使用*****************************/
+
+/*标题蓝色*/
+.title-bar{
+  display: block;
+  height: 24px;
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 24px;
+  border-left: 2px solid $themeColor;
+}
+/*窗口下的按钮================*/
+.window-opter {
+  width: 100%;
+  height: 36px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: block;
+  background-color: #eeeeee;
+  z-index:2;
+  .opter-button {
+    display: block;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    i {
+      position: relative;
+      top: 0px;
+      display: inline-block;
+      height: 34px;
+      width: 72px;
+      text-align: center;
+      color: #333333;
+      font-size: 24px;
+      font-weight: 500;
+      border-bottom: 2px solid $themeColor;
+      margin: 0px 5px;
+      transition: all 0.4s ease-in-out;
+      &:hover {
+        cursor: pointer;
+        color: #ffffff;
+        font-size: 26px;
+        background-color: $themeColor;
+        transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+}
+/*===============窗口下的按钮*/
