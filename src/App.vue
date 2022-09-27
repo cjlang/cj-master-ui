@@ -11,7 +11,6 @@
 <script>
 import EventBus from '@/utils/eventbus.js'
 import { changeThemeColor } from '@/utils/theme.js'
-import { initGlobalData } from '@/api/globalConfig.js'
 export default {
   data() {
     return {
@@ -43,7 +42,6 @@ export default {
     var that = this;
     this.desktopSize();
     window.onresize = () => that.desktopSize();
-    //initGlobalData()
   },
   methods: {
     desktopSize() {

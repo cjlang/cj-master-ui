@@ -160,6 +160,20 @@ export default {
 
 .el-row {
     margin: 10px;
+
+    .el-col {
+        border-radius: 10px;
+        background: rgba($color: #ffffff, $alpha: 0.5);
+        width: calc(50% - 10px);
+        margin: 5px;
+        transition: all .4s ease-in-out;
+
+        &:hover {
+            border-radius: 20px;
+            background: rgba($color: #FFFFFF, $alpha: 0.8);
+            transition: all .4s ease-in-out;
+        }
+    }
 }
 
 .bg-box-left {
@@ -202,7 +216,7 @@ export default {
             text-align: left;
             font-size: 16px;
             font-weight: bold;
-            color: #272727;
+            color: #393939;
         }
 
         .setting-tip {
@@ -211,7 +225,7 @@ export default {
             line-height: 25px;
             text-align: left;
             font-size: 14px;
-            color: #6e6e6e;
+            color: #646464;
         }
     }
 }
@@ -255,7 +269,7 @@ export default {
             text-align: left;
             font-size: 16px;
             font-weight: bold;
-            color: #272727;
+            color: #383838;
         }
 
         .setting-tip {
@@ -264,7 +278,7 @@ export default {
             line-height: 25px;
             text-align: left;
             font-size: 14px;
-            color: #6e6e6e;
+            color: #636363;
         }
     }
 }

@@ -38,7 +38,7 @@ export default {
     this.contextMenus = this.$store.state.sys.contextMenuConfig
   },
   mounted() {
-    this.$(".context-menu-panel").height(96 + (this.contextMenus.length * 32))
+    this.$(".context-menu-panel").height(90 + (this.contextMenus.length * 30))
   },
   methods: {
     contextClick(menucode) {
@@ -68,35 +68,39 @@ export default {
 <style scoped lang="scss">
 .context-menu-panel {
   width: 100px;
-  height: 128px;
+  height: 120px;
   display: inline-block;
-  background: #FFFFFF;
+  background: rgba($color: #000000, $alpha: 0);
   position: absolute;
   border-radius: 8px;
   z-index: 9999999;
-  box-shadow: $shadow-2;
   transition: all .4s ease-in-out;
 }
 
 .context-item {
   height: 28px;
-  width: calc(100% - 10px);
+  width: 100%;
+  backdrop-filter: blur(3px);
+  background-color: rgba($color: #000000, $alpha: 0.3);
   display: block;
   line-height: 28px;
   text-align: left;
   font-size: 13px;
-  margin: 3px 5px;
-  border-radius: 8px;
+  margin: 1px 1px;
+  border-radius: 2px;
+  box-shadow: $shadow-2;
   transition: all .4s ease-in-out;
 
   .iconfont {
     margin: 0px 5px;
     height: 28px;
+    color: #FFFFFF;
   }
 
   span {
     display: inline-block;
     height: 28px;
+    color: #FFFFFF;
   }
 
   &:hover {

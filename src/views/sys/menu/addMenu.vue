@@ -36,18 +36,18 @@
                     </el-row>
                     <el-row>
                         <el-col :span="12">
+                            <el-form-item label="菜单路径" prop="urlPath">
+                                <el-input v-model="form.urlPath"></el-input>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="12">
                             <el-form-item label="链接类型">
                                 <el-radio-group v-model="form.iframe">
                                     <el-radio :label=0>内链接</el-radio>
                                     <el-radio :label=1>外链接</el-radio>
                                 </el-radio-group>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <el-row v-if="form.iframe==0">
-                        <el-col :span="12">
-                            <el-form-item label="菜单路径" prop="urlPath">
-                                <el-input v-model="form.urlPath"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -141,7 +141,7 @@
 <script>
 import EventBus from '@/utils/eventbus.js'
 import MyColorPicker from '@/views/com/color-picker/index.js'
-import { addMenu, updateMenu, getMenu } from '@/api/menuApi.js'
+import menuapi from '@/api/menuApi.js'
 export default {
     components: { MyColorPicker },
     data() {
@@ -270,7 +270,7 @@ export default {
                 this.form.component = this.form.iframe == '1' ? 'sys/iframe/index.vue' : this.form.component
                 this.form.menuCode = this.form.urlPath
                 if (!this.isEdit) {
-                    addMenu(this.form, function (data) {
+                    this.$baseapi.add("cjmenu", this.form, function (data) {
                         that.$mymsg({
                             message: '创建成功！',
                             type: 'success'
@@ -280,7 +280,7 @@ export default {
                         EventBus.$emit('get-allprogrammenudata', true);
                     })
                 } else {
-                    updateMenu(this.form, function (data) {
+                    this.$baseapi.update("cjmenu", this.form, function (data) {
                         that.$mymsg({
                             message: '修改成功！',
                             type: 'success'
@@ -293,7 +293,7 @@ export default {
             })
         },
         getAllMenu() {
-            getMenu({ type: 2 }, data => this.menuList = data)
+            menuapi.treelist("cjmenu", { type: 2 }, data => this.menuList = data)
         },
         selectIcon(icon) {
             this.form.icon = icon
@@ -361,7 +361,7 @@ export default {
         width: 30px;
         height: 30px;
         display: inline-block;
-        color: #666666;
+        color: #ffffff;
         font-size: 28px;
     }
 

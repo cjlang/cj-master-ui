@@ -13,6 +13,7 @@ import '@/assets/style/iconfont.css'
 import '@/components/index.js'
 import { initThemeColor } from '@/utils/theme.js'
 import { get,post,put,del } from '@/utils/axios.js'
+import baseapi from '@/api/baseApi.js'
 import tools from '@/utils/tools.js'
 import winutils from '@/utils/winutils.js'
 import mynotify from '@/views/com/notify/index.js'
@@ -31,6 +32,7 @@ Vue.prototype.$get=get
 Vue.prototype.$post=post
 Vue.prototype.$put=put
 Vue.prototype.$del=del
+Vue.prototype.$baseapi=baseapi
 
 new Vue({
   router,

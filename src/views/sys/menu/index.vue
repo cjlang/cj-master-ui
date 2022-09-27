@@ -3,7 +3,7 @@
     <transition name="fade-left">
       <div class="data-list" v-show="currentPage == 'menu'">
         <el-scrollbar style="height: 100%" wrapStyle="overflow-x:hidden;">
-          <el-table :data="menuList" style="width: 100%; margin-bottom: 20px" row-key="id" default-expand-all
+          <el-table :data="menuList" style="width: calc(100% - 20px); margin: 10px" row-key="id" default-expand-all
             :tree-props="{ children: 'children'}">
             <el-table-column prop="menuName" label="名称" width="160"></el-table-column>
             <el-table-column prop="type" label="类型" width="70">
@@ -80,7 +80,7 @@ import EventBus from "@/utils/eventbus.js";
 import AddDir from "./addDir.vue";
 import AddMenu from "./addMenu.vue";
 import AddPerm from "./addPerm.vue";
-import { getMenu, delMenu } from '@/api/menuApi.js'
+import menuapi from '@/api/menuApi.js'
 export default {
   components: { AddDir, AddMenu, AddPerm },
   data() {
@@ -100,7 +100,7 @@ export default {
       console.log(tab, event);
     },
     getAllMenuList() {
-      getMenu({}, data => this.menuList = data)
+      menuapi.treelist("cjmenu", {}, data => this.menuList = data)
     },
     addMenu() {
       EventBus.$emit("window-title", {
@@ -141,7 +141,7 @@ export default {
           type: 'error'
         });
       } else {
-        delMenu(item, function (data) {
+        this.$baseapi.del("cjmenu", item, function (data) {
           that.$mymsg({
             message: '删除成功！',
             type: 'success'

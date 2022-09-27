@@ -100,6 +100,7 @@ export default {
     width: 100%;
     height: 100%;
     display: block;
+    backdrop-filter: blur(5px);
     transition: all .4s ease-in-out;
 
     .noticecenter-title {

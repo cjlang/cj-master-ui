@@ -1,35 +1,35 @@
 <template>
-    <div class="content-panel unselect" style="background-color:#F2F2F2;">
+    <div class="content-panel unselect">
         <div class="title-bar">个性颜色</div>
         <div class="content-panel-10">
-            <cj-collapse :Icon='icon.theme' IconColor="#999999" Title="主题颜色" Discript="设置全局主色调">
+            <cj-collapse :Icon='icon.theme' Title="主题颜色" Discript="设置全局主色调">
                 <my-color-picker v-model="sysColor.theme" @change="setThemeColor" style="position: relative;top:10px;">
                 </my-color-picker>
             </cj-collapse>
-            <cj-collapse :Icon='icon.topWindow' IconColor="#999999" Title="窗口顶部栏颜色" Discript="当前置顶的窗口">
+            <cj-collapse :Icon='icon.topWindow' Title="窗口顶部栏颜色" Discript="当前置顶的窗口">
                 <my-color-picker v-model="sysColor.topWindow" show-alpha @change="setTopWindowColor"
                     style="position: relative;top:10px;"></my-color-picker>
             </cj-collapse>
-            <cj-collapse :Icon='icon.unActiveWindow' IconColor="#999999" Title="窗口顶部栏颜色" Discript="非当前置顶的窗口">
+            <cj-collapse :Icon='icon.unActiveWindow' Title="窗口顶部栏颜色" Discript="非当前置顶的窗口">
                 <my-color-picker v-model="sysColor.unActiveWindow" show-alpha @change="setUnActiveWindowColor"
                     style="position: relative;top:10px;"></my-color-picker>
             </cj-collapse>
-            <cj-collapse :Icon='icon.moreFuncColor' IconColor="#999999" Title="更多功能颜色">
+            <cj-collapse :Icon='icon.moreFuncColor' Title="更多功能颜色">
                 <my-color-picker v-model="sysColor.moreFuncColor" show-alpha @change="setMoreFuncColor"
                     style="position: relative;top:10px;"></my-color-picker>
             </cj-collapse>
-            <cj-collapse :Icon='icon.bottomTaskColor' IconColor="#999999" Title="底部任务栏颜色">
+            <cj-collapse :Icon='icon.bottomTaskColor' Title="底部任务栏颜色">
                 <my-color-picker v-model="sysColor.bottomTaskColor" show-alpha @change="setBottomTaskColor"
                     style="position: relative;top:10px;"></my-color-picker>
             </cj-collapse>
-            <cj-collapse :Icon='icon.noticePanelColor' IconColor="#999999" Title="通知中心面板">
+            <cj-collapse :Icon='icon.noticePanelColor' Title="通知中心面板">
                 <my-color-picker v-model="sysColor.noticePanelColor" show-alpha @change="setNoticePanelColor"
                     style="position: relative;top:10px;"></my-color-picker>
             </cj-collapse>
         </div>
         <div class="title-bar">开始菜单</div>
         <div class="content-panel-10">
-            <cj-collapse :Icon='icon.theme' IconColor="#999999" Title="启用纯色">
+            <cj-collapse :Icon='icon.theme' Title="启用纯色">
                 <el-switch v-model="sysColor.startMenuPureColor" active-color="#409EFF" inactive-color="#CCCCCC"
                     @change="startPureColor" style="position: relative;top:15px;"></el-switch>
             </cj-collapse>
@@ -43,15 +43,15 @@
                 </div>
             </div>
             <div class="content-panel-10" v-if="sysColor.startMenuPureColor">
-                <cj-collapse :Icon='icon.theme' IconColor="#999999" Title="开始菜单左边" Discript="开始菜单左边">
+                <cj-collapse :Icon='icon.theme' Title="开始菜单左边" Discript="开始菜单左边">
                     <my-color-picker v-model="sysColor.startMenuLeftColor" show-alpha @change="setStartMenuLeftColor"
                         style="position: relative;top:10px;"></my-color-picker>
                 </cj-collapse>
-                <cj-collapse :Icon='icon.theme' IconColor="#999999" Title="开始菜单中间" Discript="开始菜单中间">
+                <cj-collapse :Icon='icon.theme' Title="开始菜单中间" Discript="开始菜单中间">
                     <my-color-picker v-model="sysColor.startMenuCenterColor" show-alpha
                         @change="setStartMenuCenterColor" style="position: relative;top:10px;"></my-color-picker>
                 </cj-collapse>
-                <cj-collapse :Icon='icon.theme' IconColor="#999999" Title="开始菜单右边" Discript="开始菜单右边">
+                <cj-collapse :Icon='icon.theme' Title="开始菜单右边" Discript="开始菜单右边">
                     <my-color-picker v-model="sysColor.startMenuRightColor" show-alpha @change="setStartMenuRightColor"
                         style="position: relative;top:10px;"></my-color-picker>
                 </cj-collapse>

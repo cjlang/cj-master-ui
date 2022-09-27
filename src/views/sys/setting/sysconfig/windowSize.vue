@@ -2,22 +2,22 @@
     <div class="content-panel">
         <div class="title-bar">窗口配置</div>
         <div class="content-panel-10">
-            <cj-collapse :Icon='icon.isOverDeskTop' IconColor="#999999" Title="桌面窗体移动" Discript="激活后窗口将可拖出桌面">
+            <cj-collapse :Icon='icon.isOverDeskTop' Title="桌面窗体移动" Discript="激活后窗口将可拖出桌面">
                 <el-switch v-model="windowConfig.isOverDeskTop" active-color="#409EFF" inactive-color="#CCCCCC"
                     @change="startPureColor" style="position: relative;top:15px;"></el-switch>
             </cj-collapse>
-            <cj-collapse :Icon='icon.taskNavMode' IconColor="#999999" Title="任务栏模式" Discript="启用后将仅显示最小化窗口">
+            <cj-collapse :Icon='icon.taskNavMode' Title="任务栏模式" Discript="启用后将仅显示最小化窗口">
                 <el-switch v-model="windowConfig.isOverDeskTop" active-color="#409EFF" inactive-color="#CCCCCC"
                     @change="startPureColor" style="position: relative;top:15px;"></el-switch>
             </cj-collapse>
-            <cj-collapse :Icon='icon.windowSize' IconColor="#999999" Title="窗口尺寸设置" Discript="正常窗口的大小">
+            <cj-collapse :Icon='icon.windowSize' Title="窗口尺寸设置" Discript="正常窗口的大小">
                 <div style="position: relative;top:10px;">
                     <el-input v-model="windowConfig.windowWidth" placeholder="宽度" style="width:35%;"></el-input>
                     *
                     <el-input v-model="windowConfig.windowHeight" placeholder="高度" style="width:35%;"></el-input>
                 </div>
             </cj-collapse>
-            <cj-collapse :Icon='icon.windowMinSize' IconColor="#999999" Title="窗口尺寸设置" Discript="窗口最小尺寸大小">
+            <cj-collapse :Icon='icon.windowMinSize' Title="窗口尺寸设置" Discript="窗口最小尺寸大小">
                 <div style="position: relative;top:10px;">
                     <el-input v-model="windowConfig.windowMinWidth" placeholder="宽度" style="width:35%;"></el-input>
                     *

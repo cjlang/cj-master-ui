@@ -31,5 +31,6 @@ export default {
 .iframe-panel {
     width: 100%;
     height: 560px;
+    background: #FFFFFF;
 }
 </style>

@@ -289,6 +289,7 @@ export default {
     position: absolute;
     left: 0px;
     bottom: 0px;
+    backdrop-filter: blur(5px);
     background: rgba($color: #000000, $alpha: 0.9);
     z-index: 200000;
 

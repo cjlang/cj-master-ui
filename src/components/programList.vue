@@ -1,7 +1,7 @@
 <template>
     <el-scrollbar style="height: 100%;" wrapStyle="overflow-x:hidden;">
         <transition name="allprogram">
-            <div v-show="isShow" class="program-panel">
+            <div v-show="isShow" class="program-item-panel">
                 <div :class="item.type==1?'diritem':'menuitem'" v-for="item in menuList" :key="item.Inx"
                     @click="openMenu(item.menuCode)">
                     <img v-if="item.imgOrIcon=='image'" :src="item.imgUrl" />
@@ -16,7 +16,7 @@
 </template>
 <script>
 import EventBus from '@/utils/eventbus.js'
-import { addMenu, updateMenu, getMenu } from '@/api/menuApi.js'
+import menuapi from '@/api/menuApi.js'
 export default {
     data() {
         return {
@@ -39,7 +39,7 @@ export default {
         getProgramMenuDataList() {
             this.menuList = []
             let that = this
-            getMenu({ type: 2, sysWindow: 0 }, function (data) {
+            menuapi.treelist("cjmenu", { type: 2, sysWindow: 0 }, function (data) {
                 let index = 0;
                 for (let i = 0; i < data.length; i++) {
                     let menu = JSON.parse(JSON.stringify(data[i]))
@@ -108,10 +108,11 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.program-panel {
+.program-item-panel {
     width: 100%;
     height: 100%;
     display: block;
+    background-color: rgba($color: #000000, $alpha: 0);
 
     .menuitem {
         height: 24px;

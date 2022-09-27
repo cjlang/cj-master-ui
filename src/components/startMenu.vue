@@ -83,6 +83,7 @@ export default {
             removeToken()
             removeSid()
             removeUserInfo()
+            EventBus.$emit('change-login-image', "1")
             this.$router.replace('/relogin')
         }
     }
@@ -96,6 +97,7 @@ export default {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     -moz-background-size: 100% 100%;
+    backdrop-filter: blur(15px);
 
     .left-menu-panel {
         width: 200px;

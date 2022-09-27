@@ -137,9 +137,9 @@ export default {
   &:hover {
     cursor: pointer;
     box-shadow: $shadow-2;
+    backdrop-filter: blur(15px);
 
     i {
-      transform: rotateX(180deg);
       transition: all .4s ease-in-out;
     }
   }

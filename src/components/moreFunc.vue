@@ -107,7 +107,7 @@ export default {
     height: 140px;
     display: block;
     margin: 0px;
-    box-shadow: $shadow-1;
+    backdrop-filter: blur(5px);
 
     &:first-child {
         margin-top: 5px;
@@ -136,9 +136,9 @@ export default {
 
     &:hover {
         cursor: pointer;
-        background-color: #1C1C1C;
+        background-color: rgba($color: #ffffff, $alpha: 0.3);
         transition: all .4s ease-in-out;
-        border: 1px solid #666666;
+        border-radius: 3px;
 
         &>i,
         span {

@@ -210,6 +210,7 @@
   font-weight: 500;
   line-height: 24px;
   border-left: 2px solid $themeColor;
+  color:#FFFFFF;
 }
 /*窗口下的按钮================*/
 .window-opter {
@@ -220,7 +221,8 @@
   right: 0px;
   bottom: 0px;
   display: block;
-  background-color: #eeeeee;
+  background-color: rgba($color: #FFFFFF, $alpha: 0.4);
+  backdrop-filter: blur(20px);
   z-index:2;
   .opter-button {
     display: block;
@@ -234,7 +236,7 @@
       height: 34px;
       width: 72px;
       text-align: center;
-      color: #333333;
+      color: #ffffff;
       font-size: 24px;
       font-weight: 500;
       border-bottom: 2px solid $themeColor;
@@ -251,3 +253,124 @@
   }
 }
 /*===============窗口下的按钮*/
+/*===============表格样式统一*/
+/deep/.el-table {
+  background-color: rgba($color: #FFFFFF, $alpha: 0.2);
+  color: #ffffff;
+  border-radius: 5px;
+  th {
+    background-color: rgba($color: $themeColor, $alpha: 0.6);
+    .cell {
+      font-weight: 500;
+    }
+  }
+
+  thead {
+    color: rgba($color: #ffffff, $alpha: 0.8);
+    font-weight: 500;
+  }
+
+  tr {
+    background-color: rgba($color: #FFFFFF, $alpha: 0.2);
+  }
+  th.is-leaf,td{
+    border-bottom:1px solid rgba($color: #ffffff, $alpha: 0.5)
+  }
+  .el-table__row:hover{
+    td{
+      background-color: rgba($color: $themeColor, $alpha: 0.2);
+    }
+  }
+  .el-table__expand-icon{
+    color: rgba($color: #ffffff, $alpha: 0.8);
+  }
+  .current-row{
+    background-color: rgba($color: $themeColor, $alpha: 0.2);
+  }
+}
+
+/*================================*/
+/deep/.el-tabs--card > {
+
+  &>.el-tabs__header .el-tabs__nav{
+    border: 1px solid rgba($color: #FFFFFF, $alpha: 0);
+  }
+
+  &> .el-tabs__header .el-tabs__item.is-active{
+    border-bottom-color: rgba($color: #FFFFFF, $alpha: 0);
+  }
+  &> .el-tabs__header .el-tabs__item{
+    border: 1px solid rgba($color: #FFFFFF, $alpha: 0);
+  }
+  .el-tabs__item{
+    color:#FFFFFF;
+  }
+  .el-tabs__nav .is-active{
+    color:$themeColor;
+    background-color: rgba($color: #FFFFFF, $alpha: 0.4);
+  }
+  &> .el-tabs__header{
+    border-bottom: 1px solid rgba($color: #FFFFFF, $alpha: 0.4)
+  }
+
+}
+
+/*===============*/
+/deep/.el-tree{
+ background-color: rgba($color: #FFFFFF, $alpha: 0);
+ color: rgba($color: #ffffff, $alpha: 0.8);
+
+ .el-tree-node__content:hover{
+   background-color: rgba($color: #DDDDDD, $alpha: 0.3);
+ }
+ .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content{
+   background-color: rgba($color: #DDDDDD, $alpha: 0.3);
+ }
+}
+
+
+/**/
+/deep/.el-form{
+  .el-form-item__label{
+    color: #FFFFFF;
+  }
+  .el-input__inner{
+    background-color:rgba($color: #FFFFFF, $alpha: 0.3);
+    color:#FFFFFF;
+  }
+  .el-input-number__increase, .el-input-number__decrease{
+    background-color:rgba($color: #FFFFFF, $alpha: 0.3);
+  }
+  .el-radio__label{
+    color:#FFFFFF;
+  }
+  .el-input-number__increase, .el-input-number__decrease{
+    color:#FFFFFF;
+  }
+  .el-textarea__inner{
+    background-color:rgba($color: #FFFFFF, $alpha: 0.3);
+    color:#FFFFFF;
+  }
+}
+
+/**/
+/deep/.el-popover{
+  background: rgba($color: #FFFFFF, $alpha: 0.2);
+}
+
+/**/
+/deep/.el-pagination{
+  color:#FFFFFF;
+  .el-pagination__total{
+    color:#FFFFFF;
+  }
+}
+/**/
+/deep/.el-message-box{
+  background-color: rgba($color: #FFFFFF, $alpha: 0.2);
+  backdrop-filter: blur(10px);
+  .el-message-box--center{
+    background-color: rgba($color: #FFFFFF, $alpha: 0.2);
+    backdrop-filter: blur(10px);
+  }
+}

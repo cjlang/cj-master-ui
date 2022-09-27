@@ -26,7 +26,7 @@ export default {
     },
     IconColor: {
       type: String,
-      default: '#888888'
+      default: '#409EFF'
     },
     Title: {
       type: String,
@@ -56,9 +56,9 @@ export default {
     height: 53px;
     display: block;
     box-shadow: $shadow-2;
-    border: 1px solid #dbdbdb;
+    border: 1px solid rgba($color: #ffffff, $alpha: 0.5);
     border-radius: 5px;
-    background-color: #fdfdfd;
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
     transition: all .4s ease-in-out;
 
     &:hover {
@@ -66,8 +66,6 @@ export default {
       cursor: pointer;
       left: 5px;
       box-shadow: $shadow-1;
-      background-color: #ffffff;
-      border: 1px solid #ffffff;
       transition: all .4s ease-in-out;
     }
 

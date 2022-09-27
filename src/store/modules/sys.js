@@ -28,7 +28,7 @@ const state = {
 
   //窗体大小相关
   windowSize:{
-    height:600,
+    height:620,
     width:960,
     minHeight:300,
     minWidth:460

@@ -43,7 +43,8 @@ export default {
             minWidth: 0,
             minHeight: 0,
             isWindowMax: false,
-            windowName: ''
+            windowName: '',
+            iframe: false
         }
     },
     created() {
@@ -106,9 +107,9 @@ export default {
             this.$store.commit('window/update_current_active_window_id', data);
             if (this.WinId == data) {
                 if (this.sysWindow) {
-                    this.$('#' + this.WinId + ' .win-title').css('background-color', 'rgba(255,255,255,1)');
-                    this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(8,8,8,1)');
-                    this.$('#' + this.WinId + ' .win-title-right i').css('color', 'rgba(8,8,8,1)');
+                    this.$('#' + this.WinId + ' .win-title').css('background-color', 'rgba(255,255,255,0.3)');
+                    this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(255,255,255,1)');
+                    this.$('#' + this.WinId + ' .win-title-right i').css('color', 'rgba(255,255,255,1)');
                 } else {
                     this.$('#' + this.WinId + ' .win-title').css('background-color', this.$store.state.sys.topWindowColor);
                     this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(255,255,255,1)');
@@ -118,9 +119,9 @@ export default {
                 this.$('#' + this.WinId).css('z-index', 1000);
             } else {
                 if (this.sysWindow) {
-                    this.$('#' + this.WinId + ' .win-title').css('background-color', 'rgba(255,255,255,1)');
-                    this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(8,8,8,1)');
-                    this.$('#' + this.WinId + ' .win-title-right i').css('color', 'rgba(8,8,8,1)');
+                    this.$('#' + this.WinId + ' .win-title').css('background-color', 'rgba(255,255,255,0.3)');
+                    this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(255,255,255,1)');
+                    this.$('#' + this.WinId + ' .win-title-right i').css('color', 'rgba(255,255,255,1)');
                 } else {
                     this.$('#' + this.WinId + ' .win-title').css('background-color', this.$store.state.sys.unActiveWindowColor);
                     this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(255,255,255,1)');
@@ -155,6 +156,11 @@ export default {
                     if (item.menuCode == this.menuCode) {
                         this._width = item.width == '' ? this._width : item.width;
                         this._height = item.height == '' ? this._height : item.height;
+                        this.$("#" + this.WinId).addClass('transition_ani');
+                        let that = this
+                        setTimeout(function () {
+                            that.$("#" + that.WinId).removeClass('transition_ani');
+                        }, 500)
                     }
                 });
             }
@@ -163,6 +169,11 @@ export default {
             if (this.menuCode === data.menuCode) {
                 this._width = data.width;
                 this._height = data.height;
+                this.$("#" + this.WinId).addClass('transition_ani');
+                let that = this
+                setTimeout(function () {
+                    that.$("#" + that.WinId).removeClass('transition_ani');
+                }, 500)
             }
         });
         EventBus.$on('change-window-min', data => {
@@ -254,7 +265,7 @@ export default {
                 this.$store.commit('window/update_window_status_max', this.WinId);
                 this.isWindowMax = true
             }
-            EventBus.$emit('change-windowsize', { height: (this.height - 40), menuCode: this.menuCode });
+            EventBus.$emit('change-windowsize', { height: (this._height - 40), menuCode: this.menuCode });
         },
         CloseWindow(WinId) {
             if (WinId == this.WinId) {
@@ -301,7 +312,7 @@ export default {
         display: block;
         width: 100%;
         height: 36px;
-        //background: #474747;
+        backdrop-filter: blur(15px);
         line-height: 36px;
         border-radius: 5px 5px 0px 0px;
 
@@ -391,13 +402,18 @@ export default {
     .win-panel {
         width: 100%;
         height: calc(100% - 36px);
-        background: #FFFFFF;
+        background-color: rgba($color: #ffffff, $alpha: 0.2);
         border-radius: 0px 0px 5px 5px;
+        backdrop-filter: blur(15px);
 
         .iframeContent {
             width: 100%;
             height: 100%;
         }
+    }
+
+    .is-iframe {
+        background-color: rgba($color: #ffffff, $alpha: 1);
     }
 }
 </style>

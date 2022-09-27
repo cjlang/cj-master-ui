@@ -65,7 +65,7 @@
 
 <script>
 import EventBus from '@/utils/eventbus.js'
-import { addMenu, updateMenu, getMenu } from '@/api/menuApi.js'
+import menuapi from '@/api/menuApi.js'
 export default {
   data() {
     return {
@@ -123,7 +123,7 @@ export default {
     saveMenuDir() {
       let that = this
       if (!this.isEdit) {
-        addMenu(this.form, function (data) {
+        this.$baseapi.add("cjmenu", this.form, function (data) {
           that.$mymsg({
             message: '创建成功！',
             type: 'success'
@@ -134,7 +134,7 @@ export default {
           EventBus.$emit('get-allprogrammenudata', true);
         })
       } else {
-        updateMenu(this.form, function (data) {
+        this.$baseapi.update("cjmenu", this.form, function (data) {
           that.$mymsg({
             message: '修改成功！',
             type: 'success'
@@ -147,7 +147,7 @@ export default {
       }
     },
     getAllMenuDir() {
-      getMenu({ type: 1 }, data => this.menuList = data)
+      menuapi.treelist("cjmenu", { type: 1 }, data => this.menuList = data)
     }
   }
 }
