@@ -13,13 +13,6 @@ var noticeCenter = {
     methods:{
         openNoticePanel(){
             this.ctrl.noticepanel=!this.ctrl.noticepanel;
-            if(this.ctrl.noticepanel)
-            {
-                EventBus.$emit('filter-desktop',true);
-            }else
-            {
-                EventBus.$emit('unfilter-desktop',false);
-            }
             EventBus.$emit('close-morefunc',false);
             EventBus.$emit('close-contextclearrecyclebin',false);
             EventBus.$emit('close-startmenu',false);

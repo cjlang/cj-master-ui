@@ -13,17 +13,20 @@ const state = {
   /**全局主题色 */
   themeColor:'#409EFF',
   /**当前窗口顶部颜色 */
-  topWindowColor:'rgba(0,122,255,0.8)',
+  topWindowColor:'rgba(0,122,255,0.6)',
   /**非置顶窗口颜色 */
-  unActiveWindowColor:'rgba(8,8,8,0.8)',
+  unActiveWindowColor:'rgba(8,8,8,0.5)',
+
+  /**窗口背景颜色 */
+  windowBackgroundColor:'rgba(255,255,255,0.3)',
   /**开始菜单存颜色 */
-  startMenuPureColor:'0',
-  startMenuLeftColor:'rgba(8,8,8,0.9)',
-  startMenuCenterColor:'rgba(10,10,10,0.9)',
-  startMenuRightColor:'rgba(10,10,10,0.9)',
-  moreFuncColor:'rgba(0,0,0,0.9)',
-  bottomTaskColor:'rgba(0,0,0,0.9)',
-  noticePanelColor:'rgba(0,0,0,0.9)',
+  startMenuPureColor:'1',
+  startMenuLeftColor:'rgba(0,0,0,0.2)',
+  startMenuCenterColor:'rgba(0,0,0,0.2)',
+  startMenuRightColor:'rgba(10,10,10,0.2)',
+  moreFuncColor:'rgba(0,0,0,0.2)',
+  bottomTaskColor:'rgba(0,0,0,0.2)',
+  noticePanelColor:'rgba(0,0,0,0.2)',
 
 
   //窗体大小相关
@@ -33,9 +36,6 @@ const state = {
     minHeight:300,
     minWidth:460
   },
-
-  desktopFilter:false,
-
   isOverDeskTop:true,
   taskNavMode:'nomal',
 
@@ -134,6 +134,10 @@ const mutations = {
   set_unActiveWindowColor(state, data){
     state.unActiveWindowColor=data;
   },
+  set_windowBackgroundColor(state, data){
+    state.windowBackgroundColor=data;
+  },
+  
 
   set_startMenuPureColor(state, data){
     state.startMenuPureColor=data;
@@ -161,10 +165,6 @@ const mutations = {
   set_windowSize(state, data){
     state.windowSize=JSON.parse(JSON.stringify(data));
   },
-  set_desktopFilter(state, data){
-    state.desktopFilter=data;
-  },
-  
   set_isOverDeskTop(state, data){
     state.isOverDeskTop=data;
   },

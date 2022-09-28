@@ -21,28 +21,28 @@
                 <div class="title-bar">菜单信息</div>
                 <el-form ref="menuDataForm" :model="form" label-width="80px" :rules="dataFormRules">
                     <el-row v-show="!isEdit">
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="所属目录" prop="pname">
                                 <el-input v-model="form.pname" disabled></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="菜单名称" prop="menuName">
                                 <el-input v-model="form.menuName"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="菜单路径" prop="urlPath">
                                 <el-input v-model="form.urlPath"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="链接类型">
                                 <el-radio-group v-model="form.iframe">
                                     <el-radio :label=0>内链接</el-radio>
@@ -52,21 +52,21 @@
                         </el-col>
                     </el-row>
                     <el-row v-if="form.iframe==0">
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="组件路径" prop="component">
                                 <el-input v-model="form.component"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row v-if="form.iframe==1">
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="外部链接">
                                 <el-input v-model="form.iframePath"></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="图标类型">
                                 <el-radio-group v-model="form.imgOrIcon">
                                     <el-radio label='image'>图片</el-radio>
@@ -76,14 +76,14 @@
                         </el-col>
                     </el-row>
                     <el-row v-if="form.imgOrIcon=='icon'">
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="图标颜色">
                                 <my-color-picker v-model="form.iconColor" show-alpha></my-color-picker>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row v-if="form.imgOrIcon=='icon'">
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="icon图标">
                                 <el-popover v-model="showIcon" placement="bottom" width="400" :visible-arrow=false
                                     trigger="click">
@@ -97,7 +97,7 @@
                         </el-col>
                     </el-row>
                     <el-row v-if="form.imgOrIcon=='image'">
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="图片选择">
                                 <el-popover v-model="showImage" placement="bottom" width="400" :visible-arrow=false
                                     trigger="click">
@@ -112,7 +112,7 @@
                         </el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="菜单排序">
                                 <el-input-number v-model="form.orderNum" :min="1" :max="10000" label="排序">
                                 </el-input-number>
@@ -120,7 +120,7 @@
                         </el-col>
                     </el-row>
                     <el-row>
-                        <el-col :span="12">
+                        <el-col :span="24">
                             <el-form-item label="备注信息">
                                 <el-input v-model="form.remark" type="textarea"></el-input>
                             </el-form-item>
@@ -317,7 +317,8 @@ export default {
 }
 
 .right-form {
-    width: calc(100% - 200px);
+    width: calc(100% - 240px);
+    padding-right: 40px;
     height: 100%;
     display: inline-block;
     float: right;

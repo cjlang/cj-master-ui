@@ -246,9 +246,10 @@ export default {
                 orgId: '1',
                 pwdExpireDate: ''
             };
-            EventBus.$emit('change-window-size', { menuCode: this.menuCode, width: 300, height: 500 });
+            EventBus.$emit('change-window-size', { menuCode: this.menuCode, width: 300 });
         },
         edit(row) {
+            EventBus.$emit('window-title', { menuCode: this.menuCode, windowName: '编辑【' + row.realName + '】信息' });
             this.isEdit = true
             this.currentPage = 'add';
             this.form.id = row.id
@@ -257,6 +258,7 @@ export default {
             this.form.realName = row.realName
             this.form.status = row.status
             this.form.pwdExpireDate = row.pwdExpireDate
+            EventBus.$emit('change-window-size', { menuCode: this.menuCode, width: 300 });
         },
         del(row) {
             delRole({ 'id': row.id }, (data) => {

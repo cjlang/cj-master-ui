@@ -2,7 +2,7 @@
  * @Author: cjlang 759403090@qq.com
  * @Date: 2022-05-18 17:40:09
  * @LastEditors: cjlang 759403090@qq.com
- * @LastEditTime: 2022-09-19 14:42:47
+ * @LastEditTime: 2022-09-27 17:37:17
  * @FilePath: /cj-master-ui/public/config/index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -37,8 +37,6 @@
     startMenuFavoriteConfig:[],
     //垃圾箱APP的ID
     recycleBinId:'recycleBin100',
-    //桌面是否要模糊
-    desktopFilter:false,
     //激活窗口颜色
     topWindowColor:'#007aff',
     //未激活窗口顶部颜色

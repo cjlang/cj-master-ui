@@ -21,14 +21,14 @@
         <div class="title-bar">目录信息</div>
         <el-form ref="form" :model="form" label-width="80px">
           <el-row>
-            <el-col :span="12">
+            <el-col :span="24">
               <el-form-item label="目录名称">
                 <el-input v-model="form.menuName"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="12">
+            <el-col :span="24">
               <el-form-item label="系统目录">
                 <el-radio-group v-model="form.sysWindow">
                   <el-radio :label=0>否</el-radio>
@@ -38,14 +38,14 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="12">
+            <el-col :span="24">
               <el-form-item label="目录排序">
                 <el-input-number v-model="form.orderNum" :min="1" :max="10000" label="排序"></el-input-number>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="12">
+            <el-col :span="24">
               <el-form-item label="备注信息">
                 <el-input v-model="form.remark" type="textarea"></el-input>
               </el-form-item>
@@ -162,7 +162,8 @@ export default {
 }
 
 .right-form {
-  width: calc(100% - 200px);
+  width: calc(100% - 240px);
+  padding-right: 40px;
   height: 100%;
   display: inline-block;
   float: right;

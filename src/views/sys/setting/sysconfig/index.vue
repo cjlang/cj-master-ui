@@ -156,6 +156,7 @@ export default {
     display: block;
     overflow-x: hidden;
     padding: 10px 50px;
+    perspective: 500px;
 }
 
 .el-row {
@@ -166,12 +167,18 @@ export default {
         background: rgba($color: #ffffff, $alpha: 0.5);
         width: calc(50% - 10px);
         margin: 5px;
-        transition: all .4s ease-in-out;
+        transition: all .3s ease-in-out;
 
         &:hover {
-            border-radius: 20px;
-            background: rgba($color: #FFFFFF, $alpha: 0.8);
-            transition: all .4s ease-in-out;
+            background: rgba($color: #ffffff, $alpha: 0.8);
+            transform: rotateY(10deg);
+            transition: all .3s ease-in-out;
+
+            .icon {
+                position: relative;
+                top: -10px;
+                transition: all .4s ease-in-out;
+            }
         }
     }
 }
@@ -181,6 +188,7 @@ export default {
     height: 70px;
     transition: all .4s ease-in-out;
     float: right;
+    transition: all .4s ease-in-out;
 
     &:hover {
         cursor: pointer;
@@ -192,6 +200,7 @@ export default {
         height: 70px;
         float: left;
         text-align: center;
+        transition: all .4s ease-in-out;
 
         i {
             width: 70px;
@@ -246,6 +255,7 @@ export default {
         height: 70px;
         float: left;
         text-align: center;
+        transition: all .4s ease-in-out;
 
         i {
             width: 70px;

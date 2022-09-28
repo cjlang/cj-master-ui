@@ -3,7 +3,7 @@
         <transition name="allprogram">
             <div v-show="isShow" class="program-item-panel">
                 <div :class="item.type==1?'diritem':'menuitem'" v-for="item in menuList" :key="item.Inx"
-                    @click="openMenu(item.menuCode)">
+                    @click="openMenu(item)">
                     <img v-if="item.imgOrIcon=='image'" :src="item.imgUrl" />
                     <i v-else class="iconfont menu-icon" :style="{background:`${item.iconColor}`}">{{item.icon}}</i>
                     <span class="showdot">{{item.menuName}}</span>
@@ -100,9 +100,11 @@ export default {
             EventBus.$emit('close-startmenu', false);
             EventBus.$emit('send-desktopicon', menucode);
         },
-        openMenu(menucode) {
-            EventBus.$emit('open-window', this.$store.state.window.allMenu.filter((item) => { return item.menuCode == menucode })[0]);
-            EventBus.$emit('close-startmenu', true);
+        openMenu(menu) {
+            if (menu.type == 2) {
+                EventBus.$emit('open-window', this.$store.state.window.allMenu.filter((item) => { return item.menuCode == menu.menuCode })[0]);
+                EventBus.$emit('close-startmenu', true);
+            }
         }
     }
 }
@@ -166,7 +168,7 @@ export default {
 
         &:hover {
             cursor: pointer;
-            background-color: rgba($color: $themeColor, $alpha: 0.4);
+            background: linear-gradient(90deg, rgba($themeColor, 0), rgba($themeColor, 0.8) 40px, rgba($themeColor, 0.4) 100px, rgba($themeColor, 0));
             transition: all .4s ease-in-out;
 
             &>.right-arrow {

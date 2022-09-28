@@ -69,15 +69,6 @@ var desktop = {
             EventBus.$on('refrash-window',data=>{
                 this.winBox =JSON.parse(JSON.stringify(this.$store.state.window.winBox))
             });
-            EventBus.$on('filter-desktop',data=>{
-                if(this.$store.state.sys.desktopFilter)
-                {
-                    this.$(".desktop-panel").css('filter','blur(4px)');
-                }
-            });
-            EventBus.$on('unfilter-desktop',data=>{
-                this.$(".desktop-panel").css('filter','blur(0px)');
-            });
             EventBus.$on('open-window',data=>{
                 this.openWin(data)
             });
@@ -89,7 +80,6 @@ var desktop = {
                 this.ctrl.startpanel=!this.ctrl.startpanel
                 EventBus.$emit('show-favoriteapp',this.ctrl.startpanel);
                 EventBus.$emit('show-allprogram',this.ctrl.startpanel);
-                EventBus.$emit('unfilter-desktop', true);
                 
             });
             EventBus.$on('open-contextclearrecyclebin',data=>{
@@ -135,7 +125,6 @@ var desktop = {
                     this.$store.commit('window/update_desktop_menu', this.desktopMenus);
                     this.setDesktopMenuAutoPosition();
                     saveUserConfig({groupName:'system',configName:'desktopMenu',configValue:JSON.stringify(this.desktopMenus)},function(){})
-                    this.$notify({title: '提示',message: '已将【'+menu[0].menuName+'】快捷方式到桌面！'});
                     let that=this
                     setTimeout(function(){
                         that.bindDraggableAndDroppableEvent()
@@ -143,7 +132,7 @@ var desktop = {
                     
                 }else
                 {
-                    this.$notify({title: '提示',message: '桌面已经存在！'});
+                    this.$mymsg({message: '快捷创建成功！',type: 'success'});
                 }
                 
             });
@@ -167,13 +156,6 @@ var desktop = {
         openStartMenu(){
             EventBus.$emit('open-startmenu',true);
             EventBus.$emit('close-morefunc',false);
-            if(this.ctrl.startpanel)
-            {
-                EventBus.$emit('filter-desktop',true);
-            }else
-            {
-                EventBus.$emit('unfilter-desktop',false);
-            }
         },
         hiddenContext(){
             this.ctrl.contexmenushow=false;
@@ -184,12 +166,10 @@ var desktop = {
             EventBus.$emit('close-noticecenter',false);
             EventBus.$emit('close-contextmenu',false);
             EventBus.$emit('close-morefunc',false);
-            EventBus.$emit('unfilter-desktop',false);
         },
         ClickDesktopTask(){
             EventBus.$emit('close-contextclearrecyclebin',false);
             EventBus.$emit('close-contextmenu',false);
-            EventBus.$emit('filter-desktop',false);
         },
         openContextMenu(e){
             EventBus.$emit('close-contextclearrecyclebin',false);

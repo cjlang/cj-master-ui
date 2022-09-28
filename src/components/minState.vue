@@ -285,10 +285,12 @@ export default {
         width: 180px;
         height: 120px;
         padding: 5px;
-        background: rgba($color: #000000, $alpha: 0.3);
+        background: rgba($color: #ffffff, $alpha: 0.3);
+        backdrop-filter: 15px;
         display: none;
         border-radius: 5px;
         cursor: pointer;
+        box-shadow: $shadow-1;
         transition: all .4s ease-in-out;
 
         img {

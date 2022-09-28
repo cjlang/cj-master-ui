@@ -14,6 +14,10 @@
                 <my-color-picker v-model="sysColor.unActiveWindow" show-alpha @change="setUnActiveWindowColor"
                     style="position: relative;top:10px;"></my-color-picker>
             </cj-collapse>
+            <cj-collapse :Icon='icon.windowBackgroundColor' Title="窗口背景颜色" Discript="窗口主体背景">
+                <my-color-picker v-model="sysColor.windowBackgroundColor" show-alpha @change="setWindowBackgroundColor"
+                    style="position: relative;top:10px;"></my-color-picker>
+            </cj-collapse>
             <cj-collapse :Icon='icon.moreFuncColor' Title="更多功能颜色">
                 <my-color-picker v-model="sysColor.moreFuncColor" show-alpha @change="setMoreFuncColor"
                     style="position: relative;top:10px;"></my-color-picker>
@@ -91,7 +95,8 @@ export default {
                 unActiveWindow: '\ue893',
                 moreFuncColor: '\ueb94',
                 bottomTaskColor: '\ueb96',
-                noticePanelColor: '\ue607'
+                noticePanelColor: '\ue607',
+                windowBackgroundColor: '\uea0e'
             },
             photoSize: {
                 width: 160,
@@ -110,7 +115,8 @@ export default {
                 moreFuncColor: 'rgba(0,0,0,0.9)',
                 bottomTaskColor: 'rgba(0,0,0,0.9)',
                 noticePanelColor: 'rgba(0,0,0,0.9)',
-                startMenuPureColor: false
+                startMenuPureColor: false,
+                windowBackgroundColor: 'rgba(0,0,0,0.9)'
             }
         };
     },
@@ -118,6 +124,7 @@ export default {
         this.sysColor.theme = this.$store.state.sys.themeColor
         this.sysColor.topWindow = this.$store.state.sys.topWindowColor
         this.sysColor.unActiveWindow = this.$store.state.sys.unActiveWindowColor
+        this.sysColor.windowBackgroundColor = this.$store.state.sys.windowBackgroundColor
 
         this.sysColor.startMenuLeftColor = this.$store.state.sys.startMenuLeftColor
         this.sysColor.startMenuCenterColor = this.$store.state.sys.startMenuCenterColor
@@ -183,6 +190,11 @@ export default {
             this.$store.commit('sys/set_unActiveWindowColor', newColor);
             EventBus.$emit("update-unactivewindow-color", newColor);
             saveUserConfig({ groupName: 'system', configName: 'unActiveWindowColor', configValue: newColor }, function () { })
+        },
+        setWindowBackgroundColor(newColor) {
+            this.$store.commit('sys/set_windowBackgroundColor', newColor);
+            EventBus.$emit("update-window-background-color", newColor);
+            saveUserConfig({ groupName: 'system', configName: 'windowBackgroundColor', configValue: newColor }, function () { })
         },
         setStartMenuLeftColor(newColor) {
             EventBus.$emit("update-start-menu-left-color", newColor);

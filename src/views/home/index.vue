@@ -171,6 +171,15 @@ export default {
                         EventBus.$emit("update-topwindow-color", topWindowColor[0].configValue);
                     }
 
+                    /**设置窗口背景颜色 */
+                    let windowBackgroundColor = userConfigList.filter(function (item) {
+                        return item.configName == 'windowBackgroundColor'
+                    })
+                    if (windowBackgroundColor.length > 0) {
+                        that.$store.commit('sys/set_windowBackgroundColor', windowBackgroundColor[0].configValue);
+                        EventBus.$emit("update-window-background-color", windowBackgroundColor[0].configValue);
+                    }
+
                     /**设置未激活窗口颜色 */
                     let unActiveWindowColor = userConfigList.filter(function (item) {
                         return item.configName == 'unActiveWindowColor'

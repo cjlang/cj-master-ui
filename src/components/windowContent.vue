@@ -106,11 +106,7 @@ export default {
         EventBus.$on('active-window', data => {
             this.$store.commit('window/update_current_active_window_id', data);
             if (this.WinId == data) {
-                if (this.sysWindow) {
-                    this.$('#' + this.WinId + ' .win-title').css('background-color', 'rgba(255,255,255,0.3)');
-                    this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(255,255,255,1)');
-                    this.$('#' + this.WinId + ' .win-title-right i').css('color', 'rgba(255,255,255,1)');
-                } else {
+                if (!this.sysWindow) {
                     this.$('#' + this.WinId + ' .win-title').css('background-color', this.$store.state.sys.topWindowColor);
                     this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(255,255,255,1)');
                     this.$('#' + this.WinId + ' .win-title-right i').css('color', 'rgba(255,255,255,1)');
@@ -118,11 +114,7 @@ export default {
                 //let newIndex = this.$store.state.window.winBox[this.$store.state.window.winBox.length - 1].zIndex
                 this.$('#' + this.WinId).css('z-index', 1000);
             } else {
-                if (this.sysWindow) {
-                    this.$('#' + this.WinId + ' .win-title').css('background-color', 'rgba(255,255,255,0.3)');
-                    this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(255,255,255,1)');
-                    this.$('#' + this.WinId + ' .win-title-right i').css('color', 'rgba(255,255,255,1)');
-                } else {
+                if (!this.sysWindow) {
                     this.$('#' + this.WinId + ' .win-title').css('background-color', this.$store.state.sys.unActiveWindowColor);
                     this.$('#' + this.WinId + ' .win-title-left span').css('color', 'rgba(255,255,255,1)');
                     this.$('#' + this.WinId + ' .win-title-right i').css('color', 'rgba(255,255,255,1)');
@@ -135,6 +127,11 @@ export default {
         });
         EventBus.$on('update-unactivewindow-color', color => {
             this.$('#' + this.WinId + ' .win-title').css('background-color', color);
+        });
+        EventBus.$on('update-window-background-color', color => {
+            if (!this.sysWindow) {
+                this.$('#' + this.WinId).css('background-color', color);
+            }
         });
         EventBus.$on('window-nomal', data => {
             //将收到恢复状态的，显示出来
@@ -160,20 +157,20 @@ export default {
                         let that = this
                         setTimeout(function () {
                             that.$("#" + that.WinId).removeClass('transition_ani');
-                        }, 500)
+                        }, 1500)
                     }
                 });
             }
         });
         EventBus.$on('change-window-size', data => {
             if (this.menuCode === data.menuCode) {
-                this._width = data.width;
-                this._height = data.height;
+                this._width = data.hasOwnProperty("width") ? data.width : this._width;
+                this._height = data.hasOwnProperty("height") ? data._height : this._height;
                 this.$("#" + this.WinId).addClass('transition_ani');
                 let that = this
                 setTimeout(function () {
                     that.$("#" + that.WinId).removeClass('transition_ani');
-                }, 500)
+                }, 1500)
             }
         });
         EventBus.$on('change-window-min', data => {
@@ -190,6 +187,9 @@ export default {
             setTimeout(function () {
                 that.getWindowImg();
             }, 1500);
+        }
+        if (!this.sysWindow) {
+            this.$('#' + this.WinId).css('background-color', this.$store.state.sys.windowBackgroundColor);
         }
     },
     methods: {
@@ -249,7 +249,7 @@ export default {
                 let that = this
                 setTimeout(function () {
                     that.$("#" + that.WinId).removeClass('transition_ani');
-                }, 500)
+                }, 1500)
                 this.$store.commit('window/update_window_status_nomal', this.WinId);
                 this.isWindowMax = false
             } else {
@@ -259,7 +259,7 @@ export default {
                 let that = this
                 setTimeout(function () {
                     that.$("#" + that.WinId).removeClass('transition_ani');
-                }, 500)
+                }, 1500)
                 this._width = desktopWidth;
                 this._height = desktopHeight;
                 this.$store.commit('window/update_window_status_max', this.WinId);
@@ -306,7 +306,7 @@ export default {
     display: inline-block;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: $shadow-3;
+    box-shadow: $shadow-1;
 
     .win-title {
         display: block;

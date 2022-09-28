@@ -107,6 +107,7 @@ export default {
         menuCode: this.menuCode,
         windowName: "创建菜单",
       });
+      EventBus.$emit('change-window-size', { menuCode: this.menuCode, width: 678 });
       EventBus.$emit('addmenu-1', true);
       EventBus.$emit('addmenu-2', true);
       EventBus.$emit('addmenu-3', true);
@@ -124,6 +125,7 @@ export default {
         menuCode: this.menuCode,
         windowName: "编辑" + name,
       });
+      EventBus.$emit('change-window-size', { menuCode: this.menuCode, width: 678 });
       this.currentPage = "add";
       this.tabActiveName = "menu" + item.type
       EventBus.$emit('editmenu-' + item.type, item);
@@ -160,6 +162,7 @@ export default {
         menuCode: this.menuCode,
         windowName: "菜单管理",
       });
+      EventBus.$emit('recover-window-size', { menuCode: this.menuCode });
       this.currentPage = "menu";
       this.getAllMenuList();
       EventBus.$emit('updatemenu-1', true);

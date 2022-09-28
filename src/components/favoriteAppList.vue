@@ -159,32 +159,6 @@ export default {
     width: 100%;
     height: 70px;
     display: block;
-}
-
-.mirrorRotateLevel {
-    /* 水平镜像翻转 */
-    -moz-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    transform: scaleX(-1);
-    /*兼容IE*/
-    filter: FlipH;
-}
-
-.mirrorRotateVertical {
-    /* 垂直镜像翻转 */
-    -moz-transform: scaleY(-1);
-    -webkit-transform: scaleY(-1);
-    -o-transform: scaleY(-1);
-    transform: scaleY(-1);
-    /*兼容IE*/
-    filter: FlipV;
-}
-
-
-
-
-.bg-null {
     min-height: 70px;
 }
 </style>

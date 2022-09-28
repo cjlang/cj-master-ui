@@ -1,18 +1,12 @@
 <template>
   <transition name="el-message-fade" @after-leave="handleAfterLeave">
-    <div
-      :class="[
-        'el-message',
-        type && !iconClass ? `my-message--${ type }` : '',
-        center ? 'is-center' : '',
-        showClose ? 'is-closable' : '',
-        customClass
-      ]"
-      :style="positionStyle"
-      v-show="visible"
-      @mouseenter="clearTimer"
-      @mouseleave="startTimer"
-      role="alert">
+    <div :class="[
+      'el-message',
+      type && !iconClass ? `my-message--${ type }` : '',
+      center ? 'is-center' : '',
+      showClose ? 'is-closable' : '',
+      customClass
+    ]" :style="positionStyle" v-show="visible" @mouseenter="clearTimer" @mouseleave="startTimer" role="alert">
       <i :class="iconClass" v-if="iconClass"></i>
       <i :class="typeClass" v-else></i>
       <slot>
@@ -25,114 +19,121 @@
 </template>
 
 <script type="text/babel">
-  const typeMap = {
-    success: 'success',
-    info: 'info',
-    warning: 'warning',
-    error: 'error'
-  };
+const typeMap = {
+  success: 'success',
+  info: 'info',
+  warning: 'warning',
+  error: 'error'
+};
 
-  export default {
-    data() {
+export default {
+  data() {
+    return {
+      visible: false,
+      message: '',
+      duration: 1500,
+      type: 'info',
+      iconClass: '',
+      customClass: '',
+      onClose: null,
+      showClose: false,
+      closed: false,
+      verticalOffset: 5,
+      timer: null,
+      dangerouslyUseHTMLString: false,
+      center: false
+    };
+  },
+
+  computed: {
+    typeClass() {
+      return this.type && !this.iconClass
+        ? `el-message__icon el-icon-${typeMap[this.type]}`
+        : '';
+    },
+    positionStyle() {
       return {
-        visible: false,
-        message: '',
-        duration: 1500,
-        type: 'info',
-        iconClass: '',
-        customClass: '',
-        onClose: null,
-        showClose: false,
-        closed: false,
-        verticalOffset: 5,
-        timer: null,
-        dangerouslyUseHTMLString: false,
-        center: false
+        'top': `${this.verticalOffset}px`
       };
+    }
+  },
+
+  watch: {
+    closed(newVal) {
+      if (newVal) {
+        this.visible = false;
+      }
+    }
+  },
+
+  methods: {
+    handleAfterLeave() {
+      this.$destroy(true);
+      this.$el.parentNode.removeChild(this.$el);
     },
 
-    computed: {
-      typeClass() {
-        return this.type && !this.iconClass
-          ? `el-message__icon el-icon-${ typeMap[this.type] }`
-          : '';
-      },
-      positionStyle() {
-        return {
-          'top': `${ this.verticalOffset }px`
-        };
+    close() {
+      this.closed = true;
+      if (typeof this.onClose === 'function') {
+        this.onClose(this);
       }
     },
 
-    watch: {
-      closed(newVal) {
-        if (newVal) {
-          this.visible = false;
-        }
-      }
+    clearTimer() {
+      clearTimeout(this.timer);
     },
 
-    methods: {
-      handleAfterLeave() {
-        this.$destroy(true);
-        this.$el.parentNode.removeChild(this.$el);
-      },
-
-      close() {
-        this.closed = true;
-        if (typeof this.onClose === 'function') {
-          this.onClose(this);
-        }
-      },
-
-      clearTimer() {
-        clearTimeout(this.timer);
-      },
-
-      startTimer() {
-        if (this.duration > 0) {
-          this.timer = setTimeout(() => {
-            if (!this.closed) {
-              this.close();
-            }
-          }, this.duration);
-        }
-      },
-      keydown(e) {
-        if (e.keyCode === 27) { // esc关闭消息
+    startTimer() {
+      if (this.duration > 0) {
+        this.timer = setTimeout(() => {
           if (!this.closed) {
             this.close();
           }
-        }
+        }, this.duration);
       }
     },
-    mounted() {
-      this.startTimer();
-      document.addEventListener('keydown', this.keydown);
-    },
-    beforeDestroy() {
-      document.removeEventListener('keydown', this.keydown);
+    keydown(e) {
+      if (e.keyCode === 27) { // esc关闭消息
+        if (!this.closed) {
+          this.close();
+        }
+      }
     }
-  };
+  },
+  mounted() {
+    this.startTimer();
+    document.addEventListener('keydown', this.keydown);
+  },
+  beforeDestroy() {
+    document.removeEventListener('keydown', this.keydown);
+  }
+};
 </script>
 <style scoped lang="scss">
-.el-message{
-  background-color: rgba($color: #000000, $alpha: 0.3);
-  border-color:rgba($color: #000000, $alpha: 0.3);
+.el-message {
+  background-color: rgba($color: #fbfbfb, $alpha: 0.3);
+  border-color: rgba($color: #ffffff, $alpha: 0.3);
+  backdrop-filter: blur(15px);
 }
-.el-icon-info,.el-message__content{
-  color:#FFFFFF;
-}
-.my-message--success{
+
+.el-icon-info,
+.el-message__content {
   color: #FFFFFF;
 }
-.my-message--info{
+
+.my-message--success {
   color: #FFFFFF;
 }
-.my-message--warning{
+
+.my-message--info {
   color: #FFFFFF;
 }
-.my-message--error{
+
+.my-message--warning {
+  color: #FFFFFF;
+}
+
+.my-message--error {
   color: #FFFFFF;
 }
 </style>
